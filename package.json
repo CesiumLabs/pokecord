@@ -1,0 +1,34 @@
+{
+  "name": "pokecord",
+  "version": "1.0.0",
+  "description": "Pokémon game for discord bots.",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd test && node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevSnowflake/pokecord.git"
+  },
+  "keywords": [
+    "pokecord",
+    "pokémon",
+    "pokécord",
+    "game",
+    "discord",
+    "discord.js",
+    "api"
+  ],
+  "author": "Snowflake107",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/DevSnowflake/pokecord/issues"
+  },
+  "homepage": "https://github.com/DevSnowflake/pokecord#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "discord.js": "^12.4.1"
+  }
+}
