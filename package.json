@@ -26,7 +26,6 @@
   },
   "homepage": "https://github.com/DevSnowflake/pokecord#readme",
   "devDependencies": {
-    "discord.js": "^12.4.1",
     "node-fetch": "^2.6.1"
   }
 }
