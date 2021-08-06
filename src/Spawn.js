@@ -14,9 +14,7 @@ module.exports = (id) => {
 
         fetch(`${Constants.BASE_API_URL}/pokemon/${ID}`)
             .then(res => {
-                const reason = res.status === 404 ? `Pokemon with ID "${ID}" not found!` : `Rejected with status code ${res.status}!`;
-                if (res.status !== 200) reject(new Error(reason));
-
+                if (!res.ok) throw new Error(res.status === 404 ? `Pokemon with ID "${ID}" not found!` : `Rejected with status code ${res.status}!`);
                 return res.json();
             })
             .then(json => {

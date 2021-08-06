@@ -1,6 +1,6 @@
 {
   "name": "pokecord",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pokémon game for discord bots.",
   "main": "index.js",
   "scripts": {
@@ -25,10 +25,8 @@
     "url": "https://github.com/DevSnowflake/pokecord/issues"
   },
   "homepage": "https://github.com/DevSnowflake/pokecord#readme",
-  "dependencies": {
-    "node-fetch": "^2.6.1"
-  },
   "devDependencies": {
-    "discord.js": "^12.4.1"
+    "discord.js": "^12.4.1",
+    "node-fetch": "^2.6.1"
   }
 }
