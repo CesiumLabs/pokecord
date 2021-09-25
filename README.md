@@ -13,39 +13,41 @@ $ npm i pokecord
 const { MessageEmbed } = require("discord.js");
 const { Spawn } = require("pokecord");
 
-module.exports.run = async (client, message, args) => {
+module.exports = {
+    name: "spawn", // The name of the command
+    aliases: ["guess-the-pokemon"],
 
-    const pokemon = await Spawn().catch(e => {});
-    if (!pokemon) return message.channel.send("Opps! Something went wrong :(");
-    const filter = m => m.author.id === message.author.id;
+    run: async (client, message, args) => {
+        // Getting a random pokemon
+        const pokemon = await Spawn().catch(e => { });
+        if (!pokemon) return message.channel.send("Opps! Something went wrong :(");
 
-    const embed = new MessageEmbed()
-        .setAuthor("Guess the pokemon")
-        .setColor("#FFFF00")
-        .setImage(pokemon.imageURL);
-    
-    await message.channel.send(embed);
+        // Sending the pokemon image
+        const embed = new MessageEmbed()
+            .setAuthor("Guess the pokemon")
+            .setColor("#FFFF00")
+            .setImage(pokemon.imageURL);
 
-    message.channel.awaitMessages(filter, {
-        max: 1,
-        error: ["time"],
-        time: 15000
-    })
-    .then(collected => {
-        const m = collected.first();
-        if (!m.content || m.content.toLowerCase() !== pokemon.name.toLowerCase()) return message.channel.send(`❌ | Incorrect guess! The answer was **${pokemon.name}**.`);
-        return message.channel.send(`✅ | Correct guess!`);
-    })
-    .catch(() => {
-        message.channel.send(`❌ | You did not answer in time. The correct answer was **${pokemon.name}**!`);
-    });
+        await message.channel.send(embed);
 
-};
+        // Getting the user's response
+        message.channel.awaitMessages({
+            max: 1,
+            errors: ["time"],
+            time: 20000,
+            filter: (msg) => msg.author.id === message.author.id,
+        }).then(collected => {
+            const msg = collected.first();
 
-module.exports.help = {
-    name: "pokemon",
-    aliases: ["guessthepokemon"]
-};
+            if (!msg.content || msg.content.toLowerCase() !== pokemon.name.toLowerCase())
+                return message.channel.send({ content: `❌ | Incorrect guess! The answer was **${pokemon.name}**.` });
+
+            return message.channel.send({ content: `✅ | Correct guess!` });
+        }).catch(() => {
+            message.channel.send({ content: `❌ | You did not answer in time. The correct answer was **${pokemon.name}**!` });
+        });
+    }
+}
 ```
 
 # Join my discord
