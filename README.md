@@ -10,7 +10,7 @@ $ npm i pokecord
 # Discord.js Example
 
 ```js
-const { MessageEmbed, Message } = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 const { Spawn } = require("pokecord");
 
 module.exports = {
