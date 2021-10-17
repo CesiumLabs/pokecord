@@ -129,9 +129,7 @@ class Pokemon {
 
     _toTitleCase(str) {
         if (typeof str !== "string") return null;
-        return str.replace(/\w\S*/g, (txt) => {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        });
+        return str.replace(/\b\w/g, w => w.toUpperCase());
     }
 
 }
